@@ -1,18 +1,21 @@
 #include <iostream>
+#include "part1.h"
+//#include "part2.h"
+
 using namespace std;
 
 int main()
 {
    					/* Tree 1 */
 	
-   /* The class for math operations*/
+   /* The class objects for math operations*/
    Add A;
    Sub B;
    Mult C;
    Div D;
    Sqr E;
 
-   /* The class operand for numbers 1-5*/
+   /* The class objects of operand for numbers 1-5*/
    Operand one(1); 
    Operand two(2); 
    Operand three(3); 
@@ -29,14 +32,30 @@ int main()
    /* Solution to Tree1 */
    double solution = E.evaluate();
    cout << "The solution is " << solution << endl;
-   
-   					/* Tree 2 */
-  Add Y;
-  Sqr Z;
+    					
+  /* Tree 2*/
+   Add Y;
+   Sqr Z;
 
-  Z.child = &three; 
-  Y.left_child = &Z; Y.right_child = &one;
+   Z.child = &three; 
+   Y.left_child = &Z; Y.right_child = &one;
 
+   double solution1 = Y.evaluate();
+   cout << solution1 << endl;
+
+   /* Tree 3 */
+   Sqr W;
+   W.child = &five;
+
+   double solution2 = W.evaluate();
+   cout << solution2 << endl;
+
+   /* Tree 4 */
+   Sqr F;
+   F.child = &four;
+
+   double solution4 = F.evaluate();
+   cout << solution4 << endl;
 
   return 0;
 }
