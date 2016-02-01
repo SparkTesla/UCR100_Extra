@@ -6,6 +6,8 @@
 #include <list>
 #include <iostream>
 
+class Container;
+
 class Sort
 {
 	public:
@@ -120,7 +122,7 @@ class Vect : public Container
 	{
 	  for(int i = 0; i < bin.size(); i++)
 	  {
-	    cout << bin.at(i).evaluate() << " ";
+	    cout << bin.at(i) -> evaluate() << " ";
 	  } // COME BACK AND VERIFY LATER
 	};
 
@@ -157,14 +159,14 @@ class Bubble : public Sort
       {	
 	  int flag = 1;
 
-	  for(int i = 1; (i <= *container.size()) && flag; i++)
+	  for(int i = 1; (i <= container -> size()) && flag; i++)
 	  {	
 		flag = 0;	
-	    for(int j = 0; j < *container.size()- 1; j++)
+	    for(int j = 0; j < container -> size()- 1; j++)
 	    {
-		    if( *container.at(j) > *container.at(j + 1) )
+		    if( container -> at(j) > container -> at(j + 1) )
 		    {
-			*container.swap(j,j + 1);
+			container -> swap(j,j + 1);
 			flag = 1;
 		    }
 	    }
@@ -177,13 +179,13 @@ class Select : public Sort
     public:
 	void sort(Container* container)
 	{
-	  for(int i = 0; i < *container.size(); i++)
+	  for(int i = 0; i < container -> size(); i++)
 	  {
-	    for(int j = i; j < *container.size(); j++)
+	    for(int j = i; j < container -> size(); j++)
 	    {
-		    if( *container.at(j) < *container.at(i) )
+		    if( container -> at(j) < container -> at(i) )
 		    {
-			*container.swap(i,j);
+			container -> swap(i,j);
 		    }
 	    }
 	  }
