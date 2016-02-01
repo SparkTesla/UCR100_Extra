@@ -12,7 +12,7 @@ class Sort
 {
 	public:
 		/* Constructors */
-		Sort();
+		Sort() {};
 
 		/* Pure Virtual Functions */
 		virtual void sort(Container* container) = 0;
@@ -45,7 +45,7 @@ class Container
 class List : public Container
 {
   public:
-	  List();
+	  List(){};
 	  // Adding elements to a list by using Base pointer 
 	  void add_element(Base* element)
 	  {
@@ -57,7 +57,7 @@ class List : public Container
 	    list<Base *>::iterator it = bin.begin();
 	    for(; it != bin.end(); it++)
 	    {
-		cout << *it << " ";
+		cout << (*it) -> evaluate() << " ";
 	    }
 	  };
 
@@ -70,7 +70,6 @@ class List : public Container
 	  { 
 	    list<Base *>::iterator it1 = bin.begin();
 	    list<Base *>::iterator it2 = bin.begin();
-	    //list<Base *>::iterator it3 = bin.begin();
 	    Base * temp;
 
 	    for(int x = 0; x < i; x++)
@@ -112,7 +111,8 @@ class List : public Container
 class Vect : public Container
 {
    public:
-	Vect();
+	Vect() {};
+	void set_sort_function(Sort* sort_function) { this -> sort_function = sort_function;};
 	void add_element(Base* element) 
 	{
 	   bin.push_back(element);
@@ -155,6 +155,7 @@ class Vect : public Container
 class Bubble : public Sort
 {
    public:
+      Bubble() {};
       void sort(Container* container)
       {	
 	  int flag = 1;
@@ -177,11 +178,12 @@ class Bubble : public Sort
 class Select : public Sort
 { 
     public:
+	Select() {};
 	void sort(Container* container)
 	{
 	  for(int i = 0; i < container -> size(); i++)
 	  {
-	    for(int j = i; j < container -> size(); j++)
+	    for(int j = i+ 1; j < container -> size(); j++)
 	    {
 		    if( container -> at(j) < container -> at(i) )
 		    {

@@ -1,6 +1,6 @@
 #include <iostream>
 #include "part1.h"
-//#include "part2.h"
+#include "part2.h"
 
 using namespace std;
 
@@ -30,8 +30,8 @@ int main()
    E.child = &C;
 
    /* Solution to Tree1 */
-   double solution = E.evaluate();
-   cout << "The solution is " << solution << endl;
+   //double solution = E.evaluate();
+   //cout << "The solution is " << solution << endl;
     					
   /* Tree 2*/
    Add Y;
@@ -40,22 +40,40 @@ int main()
    Z.child = &three; 
    Y.left_child = &Z; Y.right_child = &one;
 
-   double solution1 = Y.evaluate();
-   cout << solution1 << endl;
+   //double solution1 = Y.evaluate();
+   //cout << solution1 << endl;
 
    /* Tree 3 */
    Sqr W;
    W.child = &five;
 
-   double solution2 = W.evaluate();
-   cout << solution2 << endl;
+   //double solution2 = W.evaluate();
+   //cout << solution2 << endl;
 
    /* Tree 4 */
    Sqr F;
    F.child = &four;
 
-   double solution4 = F.evaluate();
-   cout << solution4 << endl;
+   //double solution4 = F.evaluate();
+   //cout << solution4 << endl;
 
+  /* List */
+  Vect test;
+  Base * point = &E;
+  test.add_element(point);
+  point = &Y;
+  test.add_element(point);
+  point = &W;
+  test.add_element(point);
+  point = &F;
+  test.add_element(point);
+
+  Sort * temp = new Bubble();
+  test.set_sort_function(temp);
+  test.print();
+  cout << endl;
+  test.sort();
+  test.print();
+  
   return 0;
 }
