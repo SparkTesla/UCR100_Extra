@@ -45,6 +45,8 @@ class Container
 class List : public Container
 {
   public:
+	
+	  void set_sort_function(Sort* sort_function) { this -> sort_function = sort_function;};
 	  List(){};
 	  // Adding elements to a list by using Base pointer 
 	  void add_element(Base* element)
