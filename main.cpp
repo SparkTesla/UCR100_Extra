@@ -58,6 +58,7 @@ int main()
    //cout << solution4 << endl;
 
   /*Vect */
+  cout << "Testing Vector container" << endl;
   Vect test;
   Base * point = &E;
   test.add_element(point);
@@ -93,5 +94,47 @@ int main()
   cout << endl;
   test2.sort();
   test2.print();
+  cout << endl;
+  //////////////////////////////////////////
+  /*List*/
+  cout << endl <<  "Testing List container" << endl;
+  List test3;
+  Base * point3 = &E;
+  test3.add_element(point3);
+  point3 = &Y;
+  test3.add_element(point3);
+  point3 = &W;
+  test3.add_element(point3);
+  point3 = &F;
+  test3.add_element(point3);
+  //second vect
+  List  test4;
+  Base * point4 = &E;
+  test4.add_element(point4);
+  point4 = &Y;
+  test4.add_element(point4);
+  point4 = &W;
+  test4.add_element(point4);
+  point4 = &F;
+  test4.add_element(point4); 
+  /*Bubble sort*/
+  cout << "Using bubble sort" << endl;
+  Sort * temp2 = new Bubble();
+  test3.set_sort_function(temp2);
+  test3.print();
+  cout << endl;
+  test3.sort();
+  test3.print();
+  /*Select*/
+  cout << endl<< "Using select sort" << endl;
+  temp2 = new Select();
+  test4.set_sort_function(temp2);
+  test4.print();
+  cout << endl;
+  test4.sort();
+  test4.print();
+  cout << endl;
+
+
   return 0;
 }
