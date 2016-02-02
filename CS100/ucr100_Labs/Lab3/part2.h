@@ -162,10 +162,13 @@ class Bubble : public Sort
 
 	  for(int i = 1; (i <= container -> size()) && flag; i++)
 	  {	
-		flag = 0;	
+	    flag = 0;	
 	    for(int j = 0; j < container -> size()- 1; j++)
 	    {
-		    if( container -> at(j) > container -> at(j + 1) )
+		    double a = (container->at(j))->evaluate();
+		    double b = (container->at(j + 1))->evaluate();
+
+		    if(a > b )
 		    {
 			container -> swap(j,j + 1);
 			flag = 1;
@@ -179,15 +182,18 @@ class Select : public Sort
 { 
     public:
 	Select() {};
+
 	void sort(Container* container)
 	{
-	  for(int i = 0; i < container -> size(); i++)
+	  for(int i = 0; i < ( container -> size() ); i++)
 	  {
-	    for(int j = i+ 1; j < container -> size(); j++)
+	    for(int j = i; j < container -> size(); j++)
 	    {
-		    if( container -> at(j) < container -> at(i) )
+		    double a = (container->at(j))->evaluate();
+		    double b = (container->at(i))->evaluate();
+	            if(a < b)
 		    {
-			container -> swap(i,j);
+			    container -> swap(i,j);
 		    }
 	    }
 	  }

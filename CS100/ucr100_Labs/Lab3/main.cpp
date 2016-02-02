@@ -57,7 +57,7 @@ int main()
    //double solution4 = F.evaluate();
    //cout << solution4 << endl;
 
-  /* List */
+  /*Vect */
   Vect test;
   Base * point = &E;
   test.add_element(point);
@@ -67,13 +67,31 @@ int main()
   test.add_element(point);
   point = &F;
   test.add_element(point);
-
+  //second vect
+  Vect test2;
+  Base * point2 = &E;
+  test2.add_element(point2);
+  point2 = &Y;
+  test2.add_element(point2);
+  point2 = &W;
+  test2.add_element(point2);
+  point2 = &F;
+  test2.add_element(point2); 
+  /*Bubble sort*/
+  cout << "Using bubble sort" << endl;
   Sort * temp = new Bubble();
   test.set_sort_function(temp);
   test.print();
   cout << endl;
   test.sort();
   test.print();
-  
+  /*Select*/
+  cout << endl<< "Using select sort" << endl;
+  temp = new Select();
+  test2.set_sort_function(temp);
+  test2.print();
+  cout << endl;
+  test2.sort();
+  test2.print();
   return 0;
 }
