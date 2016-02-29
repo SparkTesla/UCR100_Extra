@@ -94,36 +94,53 @@ class PreOrderIterator : public Iterator {
 		public:
 				PreOrderIterator(Base* ptr);
 
-				void PreOrderIterator::first()
+				void first()
 				{
 					// Empty the stack (just in case we had something leftover from another run)
 						 while( !iterators.empty() ) { iterators.pop(); }
 
 					// Create an iterator for the Base* that we built the iterator for
-						 Base* root;
+						 Iterator* root = self_ptr->create_iterator();
 
 					// Inititalize that iterator and push it onto the stack
-						 iterators.push(*root);
+						 root -> first();
+						 iterators.push(root);
 				}
 
-				void PreOrderIterator::next()
+				void next()
 				{
 					// Create an iterator for the item on the top of the stack
+						 Iterator* child = iterators.top() -> current() -> create_iterator();
 						 
 					// Initialize the iterator and push it onto the stack
+						 child -> first();
+						 iterators.push(child);
 					
 					// As long as the top iterator on the stack is done, pop it off the
 					// stack and then advance whatever iterator is now on top of the stack
+						while ( !(iterators.empty()) && iterators.top()->is_done() )
+						{
+								iterators.pop();
+								iterators.top() -> next();
+								if( !(iterators.empty()) )
+										break;
+						}
 				}
 
-				bool PreOrderIterator::is_done()
+				bool is_done()
 				{
 					// Return true if there are no more elements on the stack to iterate
+					if( iterators.empty() )
+									return true;
+					else
+									return false;
 				}
 
-				Base* PreOrderIteerator::current()
+				Base* current()
 				{
 					// Return the current for the top iterator in the stack
+					if( !iterators.empty() )
+							return iterators.top() -> current();
 				}
 };
 

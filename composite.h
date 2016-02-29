@@ -5,7 +5,6 @@
 #include <sstream>
 #include <math.h>
 #include <string>
-#include "iterator.h"
 
 using namespace std;
 
